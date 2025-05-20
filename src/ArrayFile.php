@@ -144,7 +144,7 @@ class ArrayFile extends DataFile implements DataFileInterface
 
         // special handling of function objects
         if (get_class($target->value) === FuncCall::class && $valueType !== 'function') {
-            if ($target->value->name->parts[0] !== 'env' || !isset($target->value->args[0])) {
+            if (get_class($target->value->name) === Name::class && $target->value->name->getFirst !== 'env' || !isset($target->value->args[0])) {
                 return $this;
             }
             /* @phpstan-ignore-next-line */
