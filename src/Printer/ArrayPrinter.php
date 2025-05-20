@@ -68,7 +68,7 @@ class ArrayPrinter extends Standard
      * @param bool $trailingComma
      * @return string
      */
-    protected function pMaybeMultiline(array $nodes, bool $trailingComma = false)
+    protected function pMaybeMultiline(array $nodes, bool $trailingComma = false): string
     {
         if ($this->hasNodeWithComments($nodes) || (isset($nodes[0]) && $nodes[0] instanceof Expr\ArrayItem)) {
             return $this->pCommaSeparatedMultiline($nodes, $trailingComma) . $this->nl;
@@ -178,12 +178,12 @@ class ArrayPrinter extends Standard
      *
      * @return string
      */
-    protected function indent(): string
-    {
-        $this->indentLevel += 4;
-        $this->nl .= '    ';
-        return $this->nl;
-    }
+//    protected function indent(): string
+//    {
+//        $this->indentLevel += 4;
+//        $this->nl .= '    ';
+//        return $this->nl;
+//    }
 
     /**
      * Decrease indentation level.
@@ -191,13 +191,13 @@ class ArrayPrinter extends Standard
      *
      * @return string
      */
-    protected function outdent(): string
-    {
-        assert($this->indentLevel >= 4);
-        $this->indentLevel -= 4;
-        $this->nl = "\n" . str_repeat(' ', $this->indentLevel);
-        return $this->nl;
-    }
+//    protected function outdent(): string
+//    {
+//        assert($this->indentLevel >= 4);
+//        $this->indentLevel -= 4;
+//        $this->nl = "\n" . str_repeat(' ', $this->indentLevel);
+//        return $this->nl;
+//    }
 
     /**
      * Get all comments that have not been attributed to a node within a node array
@@ -307,7 +307,7 @@ class ArrayPrinter extends Standard
      * @param Expr\Include_ $node
      * @return string
      */
-    protected function pExpr_Include(Expr\Include_ $node)
+    protected function pExpr_Include(Expr\Include_ $node, int $precedence, int $lhsPrecedence): string
     {
         static $map = [
             Expr\Include_::TYPE_INCLUDE      => 'include',

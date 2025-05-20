@@ -80,7 +80,7 @@ class ArrayFile extends DataFile implements DataFileInterface
         }
 
         $lexer = new Lexer\Emulative();
-        $parser = (new ParserFactory)->create(ParserFactory::PREFER_PHP7, $lexer);
+        $parser = (new ParserFactory)->createForHostVersion();
 
         try {
             $ast = $parser->parse(
