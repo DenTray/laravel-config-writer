@@ -15,6 +15,8 @@ class ArrayPrinter extends Standard
      */
     protected $lexer = null;
 
+    protected $options = [];
+
     /**
      * Creates a pretty printer instance using the given options.
      *
@@ -29,6 +31,8 @@ class ArrayPrinter extends Standard
         if (!isset($options['shortArraySyntax'])) {
             $options['shortArraySyntax'] = true;
         }
+
+        $this->options = $options;
 
         parent::__construct($options);
     }
